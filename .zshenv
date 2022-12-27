@@ -1,0 +1,12 @@
+# Golang
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/Projects/go
+export GOBIN=$GOPATH/bin
+export GOCI=/usr/local/go-ci
+export GOLANGCI_LINT_VERSION=1.20.0
+export GO111MODULE=on
+export GOSUMDB=off
+export GOPRIVATE=gitlab.frg.tech,jaxf-github.fanatics.corp
+export PATH=$PATH:$GOROOT:$GOBIN:$GOPATH
+# JQ
+export JQ_COLORS='0;33:0;35:0;35:0;34:0;32:0;36:0;36'
