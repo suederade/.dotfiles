@@ -55,14 +55,23 @@ return require('packer').startup(function(use)
 			-- Snippets
 			{'L3MON4D3/LuaSnip'},
 			{'rafamadriz/friendly-snippets'},
+
+            -- Useful status updates for LSP
+            'j-hui/fidget.nvim',
+
+            -- Additional lua configuration, makes nvim stuff amazing
+            'folke/neodev.nvim',
 		}
 	}
 
     use("folke/zen-mode.nvim")
     use("github/copilot.vim")
     use("preservim/nerdtree")
-    use("vim-airline/vim-airline")
-    use("vim-airline/vim-airline-themes")
     use("christoomey/vim-tmux-navigator")
     use("junegunn/vim-easy-align")
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 end)
