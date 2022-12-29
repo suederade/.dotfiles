@@ -74,4 +74,13 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+
+    -- Debugging
+    use('mfussenegger/nvim-dap')
+    use('rcarriga/nvim-dap-ui')
+    use('leoluz/nvim-dap-go')
+    use('nvim-telescope/telescope-dap.nvim')
+    use('theHamsta/nvim-dap-virtual-text')
+    use('fatih/vim-go')
+    use({ 'mhanberg/elixir.nvim', requires = { 'nvim-lua/plenary.nvim' }})
 end)

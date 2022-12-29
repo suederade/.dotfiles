@@ -1,5 +1,8 @@
 -- Set lualine as statusline
 -- See `:help lualine.txt`
+
+vim.cmd(':set noshowmode')
+
 require('lualine').setup {
     options = {
         icons_enabled = true,

@@ -8,9 +8,7 @@ lsp.ensure_installed({
   'sumneko_lua',
   'rust_analyzer',
   'gopls',
-  'gofumpt',
-  'goimports',
-  'elixir-ls',
+  -- 'elixir-ls', -- not sure why this isn't considered a language
 })
 
 -- Fix Undefined global 'vim'
@@ -24,23 +22,40 @@ lsp.configure('sumneko_lua', {
     }
 })
 
-
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local luasnip = require('luasnip')
+--local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  --['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  --['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  -- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   ["<C-Space>"] = cmp.mapping.complete(),
+  ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+  },
+  ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+          cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+      else
+          fallback()
+      end
+  end, { 'i', 's' }),
+  ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+          cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+      else
+          fallback()
+      end
+  end, { 'i', 's' }),
 })
 
--- disable completion with tab
--- this helps with copilot setup
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+    mapping = cmp_mappings
 })
 
 lsp.set_preferences({
@@ -101,7 +116,27 @@ lsp.on_attach(function(client, bufnr)
   nmap('<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
+
 end)
+
+require('elixir').setup({
+-- lsp.configure('elixir', {
+    settings = require('elixir').settings {
+        dialyzerEnabled = true,
+        enableTestLenses = false,
+    },
+    on_attach = function(client, bufnr)
+        local map_opts = { buffer = true, noremap = true}
+
+        -- run the codelens under the cursor
+        vim.keymap.set('n', '<space>r',  vim.lsp.codelens.run, map_opts)
+        -- remove the pipe operator
+        vim.keymap.set('n', '<space>fp', ':ElixirFromPipe<cr>', map_opts)
+        -- add the pipe operator
+        vim.keymap.set('n', '<space>tp', ':ElixirToPipe<cr>', map_opts)
+        vim.keymap.set('v', '<space>em', ':ElixirExpandMacro<cr>', map_opts)
+    end
+})
 
 lsp.setup()
 
