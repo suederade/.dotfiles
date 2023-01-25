@@ -8,6 +8,7 @@ vim.keymap.set('n', '<leader>lp', ":lua require'dap'.set_breakpoint(nil, nil, vi
 vim.keymap.set('n', '<leader>dr', ":lua require'dap'.repl.open()<CR>", { silent = true })
 vim.keymap.set('n', '<leader>dl', ":lua require'dap'.run_last()<CR>", { silent = true })
 vim.keymap.set('n', '<leader>td', ":lua require('dap-go').debug_test()<CR>", { silent = true })
+-- vim.keymap.set('n', '<leader>gg', ":<C-U>call go#def#StackPop(v:count1)<cr>", { silent = true })
 
 require("nvim-dap-virtual-text").setup()
 require('dap-go').setup()

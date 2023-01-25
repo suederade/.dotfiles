@@ -69,11 +69,27 @@ return require('packer').startup(function(use)
     use("preservim/nerdtree")
     use("christoomey/vim-tmux-navigator")
     use("junegunn/vim-easy-align")
+    use {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("todo-comments").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
+    -- code folding
+    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+    --use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+
 
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+    use('mattn/vim-goimports')
 
     -- Debugging
     use('mfussenegger/nvim-dap')
@@ -81,6 +97,8 @@ return require('packer').startup(function(use)
     use('leoluz/nvim-dap-go')
     use('nvim-telescope/telescope-dap.nvim')
     use('theHamsta/nvim-dap-virtual-text')
-    use('fatih/vim-go')
+    -- use('fatih/vim-go') -- not sure I like this
     use({ 'mhanberg/elixir.nvim', requires = { 'nvim-lua/plenary.nvim' }})
+
+
 end)
