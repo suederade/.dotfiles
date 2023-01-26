@@ -13,13 +13,29 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
+    use 'rktjmp/lush.nvim'
+	-- use({
+	-- 	'sainnhe/sonokai',
+	-- 	as = 'sonokai',
+	-- 	config = function()
+    --         vim.g.sonokai_style = 'default'
+    --         vim.g.sonokai_better_performance = 1
+	-- 		vim.cmd('colorscheme sonokai')
+	-- 	end
+	-- })
+	-- use({
+	-- 	'jacoborus/tender.vim',
+	-- 	as = 'tender',
+	-- 	config = function()
+	-- 		vim.cmd('colorscheme tender')
+	-- 	end
+	-- })
 	use({
-		'sainnhe/sonokai',
-		as = 'sonokai',
+		'NLKNguyen/papercolor-theme',
+		as = 'PaperColor',
 		config = function()
-            vim.g.sonokai_style = 'default'
-            vim.g.sonokai_better_performance = 1
-			vim.cmd('colorscheme sonokai')
+            vim.g.background = 'dark'
+			vim.cmd('colorscheme PaperColor')
 		end
 	})
 
@@ -65,7 +81,6 @@ return require('packer').startup(function(use)
 	}
 
     use("folke/zen-mode.nvim")
-    use("github/copilot.vim")
     use("preservim/nerdtree")
     use("christoomey/vim-tmux-navigator")
     use("junegunn/vim-easy-align")
@@ -99,6 +114,4 @@ return require('packer').startup(function(use)
     use('theHamsta/nvim-dap-virtual-text')
     -- use('fatih/vim-go') -- not sure I like this
     use({ 'mhanberg/elixir.nvim', requires = { 'nvim-lua/plenary.nvim' }})
-
-
 end)

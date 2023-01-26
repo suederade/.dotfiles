@@ -79,6 +79,12 @@ _G.packer_plugins = {
     path = "/Users/swade/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  PaperColor = {
+    config = { "\27LJ\2\n\\\0\0\3\0\6\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\4\0'\2\5\0B\0\2\1K\0\1\0\27colorscheme PaperColor\bcmd\tdark\15background\6g\bvim\0" },
+    loaded = true,
+    path = "/Users/swade/.local/share/nvim/site/pack/packer/start/PaperColor",
+    url = "https://github.com/NLKNguyen/papercolor-theme"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/swade/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -103,11 +109,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/swade/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
-  },
-  ["copilot.vim"] = {
-    loaded = true,
-    path = "/Users/swade/.local/share/nvim/site/pack/packer/start/copilot.vim",
-    url = "https://github.com/github/copilot.vim"
   },
   ["elixir.nvim"] = {
     loaded = true,
@@ -138,6 +139,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/swade/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/Users/swade/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -225,12 +231,6 @@ _G.packer_plugins = {
     path = "/Users/swade/.local/share/nvim/site/pack/packer/start/promise-async",
     url = "https://github.com/kevinhwang91/promise-async"
   },
-  sonokai = {
-    config = { "\27LJ\2\nä\1\0\0\3\0\a\0\r6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\4\0006\0\0\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\24colorscheme sonokai\bcmd\31sonokai_better_performance\fdefault\18sonokai_style\6g\bvim\0" },
-    loaded = true,
-    path = "/Users/swade/.local/share/nvim/site/pack/packer/start/sonokai",
-    url = "https://github.com/sainnhe/sonokai"
-  },
   ["telescope-dap.nvim"] = {
     loaded = true,
     path = "/Users/swade/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
@@ -280,14 +280,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: sonokai
-time([[Config for sonokai]], true)
-try_loadstring("\27LJ\2\nä\1\0\0\3\0\a\0\r6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\4\0006\0\0\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\24colorscheme sonokai\bcmd\31sonokai_better_performance\fdefault\18sonokai_style\6g\bvim\0", "config", "sonokai")
-time([[Config for sonokai]], false)
 -- Config for: todo-comments.nvim
 time([[Config for todo-comments.nvim]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
 time([[Config for todo-comments.nvim]], false)
+-- Config for: PaperColor
+time([[Config for PaperColor]], true)
+try_loadstring("\27LJ\2\n\\\0\0\3\0\6\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\4\0'\2\5\0B\0\2\1K\0\1\0\27colorscheme PaperColor\bcmd\tdark\15background\6g\bvim\0", "config", "PaperColor")
+time([[Config for PaperColor]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
