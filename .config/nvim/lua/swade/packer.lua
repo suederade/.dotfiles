@@ -7,33 +7,12 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
+    -- Code Parsing and navigation
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.x',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
-
-    use 'rktjmp/lush.nvim'
-	-- use({
-	-- 	'sainnhe/sonokai',
-	-- 	as = 'sonokai',
-	-- 	config = function()
-    --         vim.g.sonokai_style = 'default'
-    --         vim.g.sonokai_better_performance = 1
-	-- 		vim.cmd('colorscheme sonokai')
-	-- 	end
-	-- })
-	use('rebelot/kanagawa.nvim')
-    use('xiyaowong/nvim-transparent')
-	-- use({
-	-- 	'NLKNguyen/papercolor-theme',
-	-- 	as = 'PaperColor',
-	-- 	config = function()
-    --         vim.g.background = 'dark'
-	-- 		vim.cmd('colorscheme PaperColor')
-	-- 	end
-	-- })
-
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = function()
@@ -41,12 +20,10 @@ return require('packer').startup(function(use)
 			ts_update()
 		end,
 	}
-
 	use('nvim-treesitter/playground')
-	use('theprimeagen/harpoon')
 	use('mbbill/undotree')
-	use('tpope/vim-fugitive')
 
+    -- LSP
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		requires = {
@@ -75,11 +52,37 @@ return require('packer').startup(function(use)
 		}
 	}
 
-    use("folke/zen-mode.nvim")
-    use("preservim/nerdtree")
-    use("christoomey/vim-tmux-navigator")
-    use("junegunn/vim-easy-align")
-    use {
+    -- Navigation
+    use("preservim/nerdtree") -- File explorer
+    use("christoomey/vim-tmux-navigator") -- Navigate via nvim and tmux
+	use('theprimeagen/harpoon') -- Marking files
+
+    -- Editor Features
+	use('tpope/vim-fugitive') -- Git
+    use("junegunn/vim-easy-align") -- Allignment
+    use({'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}) -- Folding
+    use('mattn/vim-goimports') -- Imports and formatting
+
+    -- Debugging
+    use('mfussenegger/nvim-dap')
+    use('rcarriga/nvim-dap-ui')
+    use('leoluz/nvim-dap-go')
+    use('nvim-telescope/telescope-dap.nvim')
+    use('theHamsta/nvim-dap-virtual-text')
+    use({ 'mhanberg/elixir.nvim', requires = { 'nvim-lua/plenary.nvim' }})
+    -- use('fatih/vim-go') -- not sure I like this
+
+    -- Visuals
+    -- use 'rktjmp/lush.nvim'
+    use("folke/zen-mode.nvim") -- Focus single file
+	use('rebelot/kanagawa.nvim') -- Color theme
+    use('xiyaowong/nvim-transparent') -- Transparent background
+    use({'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}) -- See buffers as tabs
+    use({
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }) -- See nvim info at bottom of page
+    use({
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
         config = function()
@@ -89,24 +92,5 @@ return require('packer').startup(function(use)
                 -- refer to the configuration section below
             }
         end
-    }
-    -- code folding
-    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
-    --use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-
-
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
-    use('mattn/vim-goimports')
-
-    -- Debugging
-    use('mfussenegger/nvim-dap')
-    use('rcarriga/nvim-dap-ui')
-    use('leoluz/nvim-dap-go')
-    use('nvim-telescope/telescope-dap.nvim')
-    use('theHamsta/nvim-dap-virtual-text')
-    -- use('fatih/vim-go') -- not sure I like this
-    use({ 'mhanberg/elixir.nvim', requires = { 'nvim-lua/plenary.nvim' }})
+    }) -- Comment highlighting
 end)

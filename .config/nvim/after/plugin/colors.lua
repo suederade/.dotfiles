@@ -17,3 +17,7 @@ require('kanagawa').setup({
     theme = "default"           -- Load "default" theme or the experimental "light" theme
 })
 vim.cmd('colorscheme kanagawa')
+
+require('transparent').setup({
+    enable = true,
+})
