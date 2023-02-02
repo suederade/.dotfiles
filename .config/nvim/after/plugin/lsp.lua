@@ -3,10 +3,7 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'tsserver',
-  'eslint',
   'sumneko_lua',
-  'rust_analyzer',
   'gopls',
   -- 'elixir-ls', -- not sure why this isn't considered a language
 })
@@ -69,11 +66,6 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-  if client.name == "eslint" then
-      vim.cmd.LspStop('eslint')
-      return
-  end
-
    -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
@@ -85,11 +77,10 @@ lsp.on_attach(function(client, bufnr)
   end
 
   -- mapped by default
-  nmap('<leader>vws', vim.lsp.buf.workspace_symbol, opts)
-  nmap('<leader>vd', vim.diagnostic.open_float, opts)
-  nmap('[d', vim.diagnostic.goto_next, opts)
-  nmap(']d', vim.diagnostic.goto_prev, opts)
-  nmap('<leader>rn', vim.lsp.buf.rename, opts)
+  nmap('<leader>vws', vim.lsp.buf.workspace_symbol)
+  nmap('<leader>vd', vim.diagnostic.open_float)
+  nmap('[d', vim.diagnostic.goto_next)
+  nmap(']d', vim.diagnostic.goto_prev)
   --nmap("<leader>vrn", vim.lsp.buf.rename, opts)
 
   -- from kickstarter

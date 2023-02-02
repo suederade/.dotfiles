@@ -7,11 +7,21 @@ vim.keymap.set('n', '<leader>B', ":lua require'dap'.set_breakpoint(vim.fn.input(
 vim.keymap.set('n', '<leader>lp', ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", { silent = true })
 vim.keymap.set('n', '<leader>dr', ":lua require'dap'.repl.open()<CR>", { silent = true })
 vim.keymap.set('n', '<leader>dl', ":lua require'dap'.run_last()<CR>", { silent = true })
-vim.keymap.set('n', '<leader>td', ":lua require('dap-go').debug_test()<CR>", { silent = true })
+vim.keymap.set('n', '<leader>dt', ":lua require('dap-go').debug_test()<CR>", { silent = true })
 -- vim.keymap.set('n', '<leader>gg', ":<C-U>call go#def#StackPop(v:count1)<cr>", { silent = true })
 
 require("nvim-dap-virtual-text").setup()
-require('dap-go').setup()
+require('dap-go').setup({
+    dap_configurations = {
+        {
+            -- Must be "go" or it will be ignored by the plugin
+            type = "go",
+            name = "Attach remote",
+            mode = "remote",
+            request = "attach",
+        },
+    },
+})
 require("dapui").setup()
 
 local dap, dapui = require("dap"), require("dapui")

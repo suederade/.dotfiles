@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		'nvim-telescope/telescope.nvim', tag = '0.1.x',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
@@ -23,21 +23,16 @@ return require('packer').startup(function(use)
 	-- 		vim.cmd('colorscheme sonokai')
 	-- 	end
 	-- })
+	use('rebelot/kanagawa.nvim')
+    use('xiyaowong/nvim-transparent')
 	-- use({
-	-- 	'jacoborus/tender.vim',
-	-- 	as = 'tender',
+	-- 	'NLKNguyen/papercolor-theme',
+	-- 	as = 'PaperColor',
 	-- 	config = function()
-	-- 		vim.cmd('colorscheme tender')
+    --         vim.g.background = 'dark'
+	-- 		vim.cmd('colorscheme PaperColor')
 	-- 	end
 	-- })
-	use({
-		'NLKNguyen/papercolor-theme',
-		as = 'PaperColor',
-		config = function()
-            vim.g.background = 'dark'
-			vim.cmd('colorscheme PaperColor')
-		end
-	})
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
