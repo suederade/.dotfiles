@@ -27,6 +27,8 @@ vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]re
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sgf', builtin.git_files, { desc = '[S]earch [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = '[S]earch [M]arks' })
+vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+vim.keymap.set('n', '<leader>shi', builtin.highlights, { desc = '[S]earch [HI]ghlights' })
 
 -- require('telescope').load_extension('dap')
 require('telescope')
