@@ -15,56 +15,59 @@ vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup({
     -- Code Parsing and navigation
-	{
-		'nvim-telescope/telescope.nvim',
-		dependencies = { {'nvim-lua/plenary.nvim'} }
-	},
     {
-        -- Highlight, edit, and navigate code
-        'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-          'nvim-treesitter/nvim-treesitter-textobjects',
-        },
-        build = ':TSUpdate',
+	'nvim-telescope/telescope.nvim',
+	dependencies = { {'nvim-lua/plenary.nvim'} }
     },
-	'nvim-treesitter/playground',
-	'mbbill/undotree',
-    -- LSP
-	{
-		'VonHeikemen/lsp-zero.nvim',
-		dependencies = {
-			-- LSP Support
-			{'neovim/nvim-lspconfig'},
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
-
-			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-buffer'},
-			{'hrsh7th/cmp-path'},
-			{'saadparwaiz1/cmp_luasnip'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-nvim-lua'},
-
-			-- Snippets
-			{'L3MON4D3/LuaSnip'},
-			{'rafamadriz/friendly-snippets'},
-
-            -- Useful status updates for LSP
-            'j-hui/fidget.nvim',
-
-            -- Additional lua configuration, makes nvim stuff amazing
-            'folke/neodev.nvim',
-		}
+    {
+	-- Highlight, edit, and navigate code
+	'nvim-treesitter/nvim-treesitter',
+	dependencies = {
+	    'nvim-treesitter/nvim-treesitter-textobjects',
 	},
+	build = ':TSUpdate',
+    },
+    'nvim-treesitter/playground',
+    'mbbill/undotree',
+    -- LSP
+    {
+	'VonHeikemen/lsp-zero.nvim',
+	dependencies = {
+	    -- LSP Support
+	    'neovim/nvim-lspconfig',
+	    'williamboman/mason.nvim',
+	    'williamboman/mason-lspconfig.nvim',
+
+	    -- Autocompletion
+	    'hrsh7th/nvim-cmp',
+	    'hrsh7th/cmp-buffer',
+	    'hrsh7th/cmp-path',
+	    'saadparwaiz1/cmp_luasnip',
+	    'hrsh7th/cmp-nvim-lsp',
+	    'hrsh7th/cmp-nvim-lua',
+
+	    -- Snippets
+	    'L3MON4D3/LuaSnip',
+	    'rafamadriz/friendly-snippets',
+
+	    -- Useful status updates for LSP
+	    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+
+	    -- Additional lua configuration, makes nvim stuff amazing
+	    'folke/neodev.nvim',
+	}
+    },
 
     -- Navigation
     -- use("preservim/nerdtree") -- File explorer
     "christoomey/vim-tmux-navigator", -- Navigate via nvim and tmux
-	'theprimeagen/harpoon', -- Marking files
+    'theprimeagen/harpoon', -- Marking files
 
     -- Editor Features
-	'tpope/vim-fugitive', -- Git
+    'tpope/vim-fugitive', -- Git
+    'tpope/vim-rhubarb', -- GitHub fugitive extension
+    'tpope/vim-sleuth',
+    { 'folke/which-key.nvim', opts = {} },
     "junegunn/vim-easy-align", -- Allignment
     {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'}, -- Folding
     'mattn/vim-goimports', -- Imports and formatting

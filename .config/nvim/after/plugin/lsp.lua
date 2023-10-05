@@ -102,7 +102,15 @@ lsp.on_attach(function(client, bufnr)
 
 end)
 
-lsp.setup()
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = { 'gopls', 'lua_ls', 'elixirls' },
+  handlers = {
+    lsp.default_setup,
+  },
+})
+
+-- lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = true,

@@ -1,4 +1,4 @@
-require("swade.packer")
+require("swade.lazy")
 require("swade.remap")
 require("swade.set")
 
