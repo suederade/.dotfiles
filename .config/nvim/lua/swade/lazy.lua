@@ -71,7 +71,13 @@ return require('lazy').setup({
     "junegunn/vim-easy-align", -- Allignment
     {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'}, -- Folding
     'mattn/vim-goimports', -- Imports and formatting
-    'github/copilot.vim',
+    -- 'github/copilot.vim',
+    {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+    },
+    "zbirenbaum/copilot-cmp",
     {
         'numToStr/Comment.nvim',
         config = function()
@@ -88,8 +94,9 @@ return require('lazy').setup({
     { 'mhanberg/elixir.nvim', dependencies = { 'nvim-lua/plenary.nvim' }},
 
     -- Visuals
-    "folke/zen-mode.nvim", -- Focus single file
-	'rebelot/kanagawa.nvim', -- Color theme
+    'folke/zen-mode.nvim', -- Focus single file
+    'rebelot/kanagawa.nvim', -- Color theme
+    'chentoast/marks.nvim',
     -- use('xiyaowong/nvim-transparent') -- Transparent background
     {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
     {

@@ -13,41 +13,6 @@ lsp.configure('lua_ls', {
     }
 })
 
-local cmp = require('cmp')
-local luasnip = require('luasnip')
---local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  --['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  --['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
-  ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-  },
-  ['<C-p>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-          cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
-      else
-          fallback()
-      end
-  end, { 'i', 's' }),
-  ['<C-n>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-          cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-      else
-          fallback()
-      end
-  end, { 'i', 's' }),
-})
-
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
@@ -104,7 +69,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { 'gopls', 'lua_ls', 'elixirls' },
+  ensure_installed = { 'gopls', 'lua_ls', 'nextls', 'sqlls' },
   handlers = {
     lsp.default_setup,
   },
